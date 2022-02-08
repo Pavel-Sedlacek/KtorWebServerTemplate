@@ -20,6 +20,10 @@ class SelectBuilder<Entity>(jClass: Class<Entity>) where Entity : IntEntity {
         predicates.add(f.invoke(cb, rootEntry))
     }
 
+    fun order(sorter: BSorter<Entity>) {
+        sorter.invoke(cb, cq, rootEntry)
+    }
+
     fun clear() = predicates.clear()
 
     fun build(): List<Entity> {
